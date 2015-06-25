@@ -1,3 +1,8 @@
+Renderer = require '../renderer.coffee'
+
 module.exports =
-  toPng: -> @layer.image.toPng()
-  saveAsPng: (output) -> @layer.image.saveAsPng(output)
+  renderer: (opts) -> new Renderer(@, opts)
+  toPng: ->
+    @png = @png || @renderer({ renderHidden: @isLayer() }).toPng()
+  saveAsPng: (output) ->
+    @toPng.save(output)

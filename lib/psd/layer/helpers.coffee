@@ -14,3 +14,6 @@ module.exports =
       @adjustments['nestedSectionDivider'].isHidden
     else
       @name is "</Layer group>"
+
+  isRasterMask: ->
+    @image.hasMask() and @image.maskData.length > 0
